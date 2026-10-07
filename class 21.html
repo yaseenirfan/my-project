@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iPhone 18 Pro</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #000;
+      color: #f5f5f7;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                   "SF Pro Text", Arial, sans-serif;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero {
+      min-height: 100vh;
+      text-align: center;
+      position: relative;
+      padding-top: 32px;
+      overflow: hidden;
+    }
+
+    /* Heading */
+    .hero h1 {
+      font-size: 56px;
+      line-height: 1.05;
+      font-weight: 700;
+      letter-spacing: -2.5px;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      font-size: 28px;
+      line-height: 1.1;
+      font-weight: 400;
+      letter-spacing: -1px;
+    }
+
+    /* Buttons */
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 17px;
+    }
+
+    .btn {
+      height: 44px;
+      padding: 0 23px;
+      border-radius: 25px;
+      font-size: 17px;
+      cursor: pointer;
+      transition: .2s ease;
+      font-family: inherit;
+    }
+
+    .learn {
+      background: #087fe5;
+      color: white;
+      border: 1px solid #087fe5;
+    }
+
+    .learn:hover {
+      background: #1590f5;
+    }
+
+    .buy {
+      background: transparent;
+      color: #0a9cff;
+      border: 1px solid #0a9cff;
+    }
+
+    .buy:hover {
+      background: #0a9cff;
+      color: #000;
+    }
+
+    /* Product area */
+    .product {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      margin-top: 65px;
+    }
+
+    /*
+      Background phone/display shapes
+    */
+    .back-phone {
+      position: absolute;
+      top: 0;
+      width: 320px;
+      height: 240px;
+      border-radius: 42px 42px 0 0;
+
+      background:
+        linear-gradient(
+          145deg,
+          #eef7ff 0%,
+          #59636d 18%,
+          #171a1d 40%,
+          #eee4d9 57%,
+          #9da2a7 73%,
+          #f8f8f8 100%
+        );
+
+      border: 2px solid #555;
+      box-shadow:
+        0 0 12px rgba(255,255,255,.8),
+        0 0 35px rgba(130,180,255,.25),
+        inset 0 0 25px rgba(255,255,255,.5);
+    }
+
+    .back-phone::after {
+      content: "";
+      position: absolute;
+      top: 54px;
+      left: 87px;
+      width: 140px;
+      height: 31px;
+      background: #020202;
+      border-radius: 7px;
+    }
+
+    .phone-one {
+      left: calc(50% - 485px);
+    }
+
+    .phone-two {
+      left: calc(50% - 155px);
+      background:
+        linear-gradient(
+          130deg,
+          #e5d5cb,
+          #4b5056 25%,
+          #17191b 47%,
+          #f1eee9 68%,
+          #9ca7b1
+        );
+    }
+
+    .phone-three {
+      left: calc(50% + 175px);
+      background:
+        linear-gradient(
+          135deg,
+          #eee5e4,
+          #34363a 27%,
+          #19191c 48%,
+          #eee7df 70%,
+          #d7d9db
+        );
+    }
+
+    /* Main horizontal iPhone */
+    .main-phone {
+      position: absolute;
+      z-index: 10;
+
+      width: 830px;
+      height: 128px;
+
+      left: 50%;
+      top: 76px;
+      transform: translateX(-50%);
+
+      border-radius: 35px 35px 31px 31px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #241519 0%,
+          #3c2027 35%,
+          #301920 68%,
+          #1c1115 100%
+        );
+
+      border: 2px solid #4c343a;
+
+      box-shadow:
+        0 8px 15px rgba(0,0,0,.7),
+        0 0 12px rgba(120,70,75,.35),
+        inset 0 2px 4px rgba(255,255,255,.08);
+    }
+
+    /* Camera bump */
+    .camera-module {
+      position: absolute;
+      left: -2px;
+      top: -10px;
+
+      width: 245px;
+      height: 98px;
+
+      border-radius: 38px 28px 28px 30px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #3d252b,
+          #25161a 70%,
+          #160d10
+        );
+
+      border: 2px solid #3d282d;
+      box-shadow:
+        inset 0 2px 4px rgba(255,255,255,.08),
+        0 4px 8px rgba(0,0,0,.5);
+    }
+
+    .lens {
+      position: absolute;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle at 35% 30%,
+          #758391 0%,
+          #171b20 18%,
+          #020304 47%,
+          #30383e 58%,
+          #050505 72%
+        );
+
+      border: 5px solid #1d1618;
+
+      box-shadow:
+        0 0 0 2px #56383d,
+        inset 0 0 8px #000,
+        0 3px 5px #000;
+    }
+
+    .lens::after {
+      content: "";
+      position: absolute;
+      width: 9px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(220,240,255,.55);
+      top: 9px;
+      left: 15px;
+    }
+
+    .lens.one {
+      top: 13px;
+      left: 29px;
+    }
+
+    .lens.two {
+      top: 42px;
+      left: 5px;
+    }
+
+    .lens.three {
+      top: 42px;
+      left: 94px;
+    }
+
+    .flash {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #877a68;
+      right: 30px;
+      top: 9px;
+      box-shadow: 0 0 5px #fff;
+    }
+
+    .small-dot {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #080808;
+      border-radius: 50%;
+      right: 13px;
+      top: 10px;
+    }
+
+    /* Apple logo */
+    .apple {
+      position: absolute;
+      left: 58%;
+      top: 27px;
+      font-size: 38px;
+      opacity: .08;
+    }
+
+    /* Side buttons */
+    .side-button {
+      position: absolute;
+      height: 17px;
+      width: 94px;
+
+      top: 98px;
+
+      border-radius: 12px;
+      border: 2px solid #160e11;
+      background: #3b252a;
+    }
+
+    .button-left {
+      left: 228px;
+    }
+
+    .button-right {
+      right: 207px;
+    }
+
+    /* Antenna lines */
+    .antenna {
+      position: absolute;
+      top: 0;
+      width: 5px;
+      height: 100%;
+      background: rgba(10, 5, 7, .45);
+    }
+
+    .antenna.left {
+      left: 68px;
+    }
+
+    .antenna.right {
+      right: 68px;
+    }
+
+    /* Bottom reflection */
+    .reflection {
+      position: absolute;
+      top: 204px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 45px;
+
+      background: linear-gradient(
+        180deg,
+        rgba(255,255,255,.18),
+        rgba(255,255,255,0)
+      );
+
+      filter: blur(15px);
+      opacity: .4;
+    }
+
+    /* Windows watermark */
+    .watermark {
+      position: absolute;
+      right: 25px;
+      bottom: 27px;
+      text-align: left;
+      color: #707070;
+      font-family: Arial, sans-serif;
+    }
+
+    .watermark .title {
+      font-size: 20px;
+      margin-bottom: 3px;
+    }
+
+    .watermark .text {
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .subtitle {
+        font-size: 22px;
+      }
+
+      .product {
+        transform: scale(.72);
+        transform-origin: top center;
+        margin-top: 50px;
+      }
+
+      .watermark {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .subtitle {
+        font-size: 20px;
+      }
+
+      .buttons {
+        margin-top: 15px;
+      }
+
+      .product {
+        transform: scale(.48);
+        margin-top: 60px;
+      }
+    }
+  </style>
+</head>
+<title>iPhone Duo</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =========================
+       iPhone Duo Hero Section
+  ========================== -->
+
+  <section class="duo-hero">
+
+    <div class="duo-content">
+
+      <h1>iPhone Duo</h1>
+
+      <h2>Hello, hello.</h2>
+
+      <p class="preorder">
+        Pre-order starting 5:00 a.m. PT on 10.16
+      </p>
+
+      <p class="available">
+        Available starting 10.23
+      </p>
+
+      <div class="duo-buttons">
+
+        <a href="#" class="btn btn-primary">
+          Learn more
+        </a>
+
+        <a href="#" class="btn btn-secondary">
+          View pricing
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- Product image -->
+
+    <div class="duo-product">
+
+      <img
+        src="iphone-duo.png"
+        alt="iPhone Duo"
+      >
+
+    </div>
+
+
+    <!-- Windows watermark -->
+
+    <div class="windows-watermark">
+
+      <div class="windows-title">
+        Activate Windows
+      </div>
+
+      <div class="windows-text">
+        Go to Settings to activate Windows.
+      </div>
+
+    </div>
+
+  </section>
+
+</body>
+</html>
